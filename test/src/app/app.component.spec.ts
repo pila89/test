@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+describe('Test App Component', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -32,4 +32,8 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('test app is running!');
   });
+
+  it("contains spec with an expectation", () => {
+    expect(true).toBe(true);
+});
 });
