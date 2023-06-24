@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/app/models/product';
+import { ActivatedRoute } from '@angular/router';
+import { Product, ProductResponse } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,18 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent {
   products?: Product[];
-  loading = false;
-  constructor(private _productsService: ProductService) {}
+
+  constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getAllProducts();
   }
   getAllProducts() {
-    this.loading = true;
-    this._productsService.getAllProducts().subscribe(
-      (response) => {
-        this.products = response.products;
-        this.loading = false;
+    this._route.data.subscribe(
+      (data: { reponse?: ProductResponse }) => {
+        this.products = data.reponse?.products;
       },
       (error) => {
         console.log(error);
