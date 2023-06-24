@@ -1,0 +1,7 @@
+<p>products works!</p>
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.id }} - {{ product.title }} {{ product.price | currency }}
+  </li>
+</ul>
+<p *ngIf="!products?.length">Vous n'avez  aucun produits.</p>
